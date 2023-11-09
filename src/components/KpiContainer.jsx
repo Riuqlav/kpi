@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import KpiCard from './KpiCard';
 import KpiConfigPanel from './KpiConfigPanel';
+import styles from './KpiContainer.module.css';
 
 // Defines the main container component for KPIs
 const KpiContainer = () => {
@@ -31,7 +32,7 @@ const KpiContainer = () => {
 
   // Render the component UI
   return (
-    <div>
+    <div className={styles.container}>
       {/* Mapping over kpis array to render KpiCard for each KPI */}
       {kpis.map((kpi, index) => (
         <KpiCard

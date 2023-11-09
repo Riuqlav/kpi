@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'; // Importing PropTypes for type-checking
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './KpiConfigPanel.module.css';
+
 // Importing specific icons from FontAwesome
 import {
   faCoffee, faAnchor, faBicycle, faBell, 
@@ -47,11 +49,11 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
 
   // Render configuration panel form
   return (
-    <div className="kpi-config-panel">
+    <div className={styles.configPanel}>
       {/* Input field for KPI name */}
       <label>
         Name:
-        <input
+        <input className={styles.input}
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -105,7 +107,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
           <option value="Negative">Negative</option>
         </select>
       </label>
-      <button onClick={handleSave}>Update KPI</button>
+      <button className={styles.updateButton} onClick={handleSave}>Update KPI</button>
     </div>
   );
 };
