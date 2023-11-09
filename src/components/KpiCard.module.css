@@ -1,69 +1,92 @@
 .kpi-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #fff; /* Change to match mockup */
-    border: 1px solid #eaeaea; /* Change to match mockup */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow to match mockup */
-    border-radius: 8px; /* Adjust to match mockup */
-    padding: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .kpi-card.active {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .kpi-icon {
-    color: #4caf50; /* Change to match mockup */
-    font-size: 24px; /* Adjust size to match mockup */
-  }
-  
-  .kpi-name {
-    font-size: 14px; /* Adjust size to match mockup */
-    color: #333; /* Change to match mockup */
-    margin-top: 8px;
-  }
-  
-  .kpi-value {
-    font-size: 20px; /* Adjust size to match mockup */
-    font-weight: bold; /* Adjust weight to match mockup */
-    color: #333; /* Change to match mockup */
-    margin-top: 4px;
-  }
-  
-  .trend-icon {
-    font-size: 24px; /* Adjust size to match mockup */
-    margin-top: 4px;
-    /* Use the colors according to the trend */
-    color: var(--trend-color, #333); /* Default color, use CSS variables or classes to change */
-  }
-  
-  .trend-icon .fa-arrow-up {
-    color: #4caf50; /* Green for positive trend, adjust to match mockup */
-  }
-  
-  .trend-icon .fa-grip-lines {
-    color: #ffc107; /* Amber for neutral, adjust to match mockup */
-  }
-  
-  .trend-icon .fa-arrow-down {
-    color: #f44336; /* Red for negative trend, adjust to match mockup */
-  }
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 20px;
+  transition: border 0.3s ease;
+  min-width: 170px; 
+  width: fit-content; /* Card will grow to fit the content */
+  max-width: 100%; /* Prevents the card from exceeding the width of its container */
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
-  .tooltip {
-    position: absolute;
-    top: 100%; /* adjust as necessary */
-    left: 50%; /* centers the tooltip */
-    transform: translateX(-50%);
-    white-space: nowrap;
-    background-color: black; /* your desired background color */
-    color: white; /* your desired text color */
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
-  
+.icon-top-right {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.kpi-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  margin-left: 4px;
+}
+
+/* .kpi-card:hover {
+  border: 2px solid blue;
+} */
+
+.kpi-icon-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative; /* Container for absolute positioning of children */
+}
+
+.kpi-icon {
+  margin-left: auto; 
+  font-size: 24px;
+  color: #333;
+}
+
+.tooltip {
+  display: none; /* default state */
+  position: absolute;
+  background-color: darkblue;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  top: 10px; 
+  left: 60%;
+  transform: translateX(-50%); /* Center above the icon */
+  z-index: 10;
+}
+
+.info-icon:hover + .tooltip, .tooltip:hover {
+  display: block;
+}
+
+.kpi-name {
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  overflow: hidden; /* Ensures text doesn't overflow */
+  text-overflow: ellipsis; /* Adds an ellipsis if text overflows */
+  white-space: nowrap; /* Keeps text on one line */
+}
+
+.kpi-value {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trend-image {
+  width: auto;
+  height: 50px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-right: 4px;
+}
