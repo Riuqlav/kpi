@@ -1,27 +1,30 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; // Importing PropTypes for type-checking
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Importing specific icons from FontAwesome
 import {
   faCoffee, faAnchor, faBicycle, faBell, 
   faBolt, faBomb, faBook, faCamera, 
   faCar, faAppleAlt
 } from '@fortawesome/free-solid-svg-icons';
 
+// Array of icons for selection
 const icons = [
   faCoffee, faAnchor, faBicycle, faBell, 
   faBolt, faBomb, faBook, faCamera, 
   faCar, faAppleAlt
 ];
 
+// Component for the KPI configuration panel
 const KpiConfigPanel = ({ kpi, onSave }) => {
-  // Local state for form inputs
+  // States for form fields
   const [name, setName] = useState('');
   const [tooltipText, setTooltipText] = useState('');
   const [icon, setIcon] = useState('');
   const [value, setValue] = useState('');
   const [trend, setTrend] = useState('');
 
-  // Effect to update local state when the kpi prop changes
+  // Effect hook to set local state when kpi prop updates
   useEffect(() => {
     setName(kpi.name);
     setTooltipText(kpi.tooltipText);
@@ -30,7 +33,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
     setTrend(kpi.trend);
   }, [kpi]);
 
-  // Function to call onSave with the updated KPI object
+  // Call back Function to handle save action
   const handleSave = () => {
     onSave({
       ...kpi,
@@ -42,8 +45,10 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
     });
   };
 
+  // Render configuration panel form
   return (
     <div className="kpi-config-panel">
+      {/* Input field for KPI name */}
       <label>
         Name:
         <input
@@ -53,6 +58,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
           placeholder="Enter KPI name"
         />
       </label>
+      {/* Input field for KPI tooltip text */}
       <label>
         Tooltip Text:
         <input
@@ -62,6 +68,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
           placeholder="Enter tooltip text"
         />
       </label>
+      {/* Icon picker */}
       <label>
         Icon:
         <div className="icon-picker">
@@ -75,6 +82,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
           ))}
         </div>
       </label>
+      {/* Input field for KPI value */}
       <label>
         Value:
         <input
@@ -84,6 +92,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
           placeholder="Enter KPI value"
         />
       </label>
+      {/* Dropdown for KPI trend */}
       <label>
         Trend:
         <select
@@ -101,6 +110,7 @@ const KpiConfigPanel = ({ kpi, onSave }) => {
   );
 };
 
+// PropType validation for the KpiConfigPanel component
 KpiConfigPanel.propTypes = {
   kpi: PropTypes.shape({
     name: PropTypes.string,
