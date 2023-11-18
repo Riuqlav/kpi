@@ -59,7 +59,6 @@ const KpiCard = ({ name, tooltipText, icon, value, trend, active, onClick }) => 
     return trendIcons[trendValue] || null;
   };
 
-  // Render the KPI card
   return (
     <div className={`${styles['kpi-card']} ${active ? styles['active'] : ''}`} onClick={onClick}>
       {/* Icon container, conditionally rendered if selectedIcon exists */}
